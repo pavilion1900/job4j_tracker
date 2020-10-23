@@ -9,5 +9,11 @@ public class StartUI {
         String currentDateTimeFormat = first.getCreated().format(formatter);
         System.out.println("Текущие дата и время: " + currentDateTimeFormat);
         System.out.println(first);
+        System.out.println();
+
+        Tracker oneTr = new Tracker();
+        oneTr.add(first);
+        System.out.println(oneTr.findById(1));
+        oneTr.findAll();
     }
 }
