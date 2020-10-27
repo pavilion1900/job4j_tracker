@@ -19,9 +19,7 @@ public class StartUI {
                 System.out.println("=== All items ===");
                 Item[] allItems = tracker.findAll();
                 for (int i = 0; i < allItems.length; i++) {
-                    System.out.println("id: " + allItems[i].getId() + ", name: " + allItems[i].getName()
-                            + ", created: " + allItems[i].getCreated());
-//                    System.out.println(allItems[i]);
+                    System.out.println(allItems[i]);
                 }
             } else if (select == 2) {
                 System.out.println("=== Editing starts ===");
@@ -63,8 +61,7 @@ public class StartUI {
                 Item[] findItems = tracker.findByName(name);
                 if (findItems.length > 0) {
                     for (int i = 0; i < findItems.length; i++) {
-                        System.out.println("id: " + findItems[i].getId() + ", name: " + findItems[i].getName()
-                                + ", created: " + findItems[i].getCreated());
+                        System.out.println(findItems[i]);
                     }
                 } else {
                     System.out.println("Заявка с таким name не найдена");
