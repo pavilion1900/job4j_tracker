@@ -32,7 +32,7 @@ public class Tracker {
                 size++;
             }
         }
-        return itemsWithNames;
+        return Arrays.copyOf(itemsWithNames, size);
     }
 
     private int indexOf(int id) {
