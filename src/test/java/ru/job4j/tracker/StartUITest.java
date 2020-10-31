@@ -14,7 +14,7 @@ public class StartUITest {
         Input in = new StubInput(new String[]{"0", "Item name", "1"});
         Tracker tracker = new Tracker();
         Output output = new StubOutput();
-        UserAction[] actions = {new CreateAction(output), new Exit()};
+        UserAction[] actions = {new CreateAction(output), new Exit(output)};
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
@@ -26,7 +26,7 @@ public class StartUITest {
         String replacedName = "New item name";
         Input in = new StubInput(new String[]{"0", Integer.toString(item.getId()), replacedName, "1"});
         Output output = new StubOutput();
-        UserAction[] actions = {new ReplaceAction(), new Exit()};
+        UserAction[] actions = {new ReplaceAction(output), new Exit(output)};
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
     }
@@ -37,25 +37,26 @@ public class StartUITest {
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(new String[]{"0", Integer.toString(item.getId()), "1"});
         Output output = new StubOutput();
-        UserAction[] actions = {new DeleteAction(), new Exit()};
+        UserAction[] actions = {new DeleteAction(output), new Exit(output)};
         new StartUI(output).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
 
     @Test
     public void whenExit() {
-        Output out = new StubOutput();
+        Output output = new StubOutput();
         Input in = new StubInput(
                 new String[]{"0"}
         );
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new Exit()
+                new Exit(output)
         };
-        new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
-                "Menu." + System.lineSeparator() +
-                        "0. Exit" + System.lineSeparator()
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(output.toString(), is(
+                "Menu." + System.lineSeparator()
+                        + "0. Exit" + System.lineSeparator()
+                        + "=== Good bye ===" + System.lineSeparator()
         ));
     }
 }
