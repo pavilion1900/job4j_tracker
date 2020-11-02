@@ -82,7 +82,7 @@ public class StartUITest {
     }
 
     @Test
-    public void FindByNameAction() {
+    public void findByNameAction() {
         Tracker tracker = new Tracker();
         Item first = tracker.add(new Item("First item"));
         Item second = tracker.add(new Item("Second item"));
@@ -103,7 +103,7 @@ public class StartUITest {
     }
 
     @Test
-    public void FindByIdAction() {
+    public void findByIdAction() {
         Tracker tracker = new Tracker();
         Item first = tracker.add(new Item("First item"));
         Item second = tracker.add(new Item("Second item"));
@@ -121,5 +121,23 @@ public class StartUITest {
                         + "0. === Find item by Id ===" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
                         + "=== Good bye ===" + System.lineSeparator()));
+    }
+
+    @Test
+    public void whenInvalidExit() {
+        Output output = new StubOutput();
+        Input in = new StubInput(new String[]{"2", "0"});
+        Tracker tracker = new Tracker();
+        UserAction[] actions = {new Exit(output)};
+        new StartUI(output).init(in, tracker, actions);
+        assertThat(output.toString(), is(String.format(
+                "Menu.%n"
+                        + "0. Exit%n"
+                        + "Wrong input, you can select: 0 .. 0%n"
+                        + "Menu.%n"
+                        + "0. Exit%n"
+                        + "=== Good bye ===%n"
+                )
+        ));
     }
 }
