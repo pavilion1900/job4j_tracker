@@ -86,7 +86,6 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item first = tracker.add(new Item("First item"));
         Item second = tracker.add(new Item("Second item"));
-        System.out.println(second);
         Item third = tracker.add(new Item("Third item"));
         Input in = new StubInput(new String[]{"0", "Second item", "1"});
         Output output = new StubOutput();
