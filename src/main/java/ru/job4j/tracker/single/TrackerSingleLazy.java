@@ -1,26 +1,23 @@
 package ru.job4j.tracker.single;
 
 import ru.job4j.tracker.Item;
+import ru.job4j.tracker.Tracker;
 
 public class TrackerSingleLazy {
-    private static TrackerSingleLazy instance;
+    private static Tracker instance;
 
     private TrackerSingleLazy() {
 
     }
 
-    public static TrackerSingleLazy getInstance() {
+    public static Tracker getInstance() {
         if (instance == null) {
-            instance = new TrackerSingleLazy();
+            instance = new Tracker();
         }
         return instance;
     }
 
-    public Item add(Item model) {
-        return model;
-    }
-
     public static void main(String[] args) {
-        TrackerSingleLazy tracker = TrackerSingleLazy.getInstance();
+        Tracker tracker = TrackerSingleLazy.getInstance();
     }
 }
