@@ -23,4 +23,5 @@ public class ConvertList2ArrayTest {
         };
         assertThat(result, is(expect));
     }
+
 }

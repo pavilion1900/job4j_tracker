@@ -23,7 +23,7 @@ public class ConvertList2Array {
         int[][] rsl = toArray(list, 3);
         for (int[] row : rsl) {
             for (int cell : row) {
-                System.out.print(cell + " ");
+                System.out.print(cell + "  ");
             }
             System.out.println();
         }
