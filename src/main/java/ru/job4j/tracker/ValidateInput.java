@@ -9,7 +9,7 @@ public class ValidateInput extends ConsoleInput {
         this.in = in;
     }
 
-    public String askStr(String question){
+    public String askStr(String question) {
         return in.askStr(question);
     }
 
