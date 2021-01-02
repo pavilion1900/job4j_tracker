@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -136,5 +138,29 @@ public class StartUITest {
                         + "=== Good bye ===%n"
                 )
         ));
+    }
+
+    @Test
+    public void sortByNameUpItem() {
+        Tracker trackerOne = new Tracker();
+        Item first = trackerOne.add(new Item("orange"));
+        Item second = trackerOne.add(new Item("apple"));
+        Item third = trackerOne.add(new Item("tomato"));
+        List<Item> items = trackerOne.findAll();
+        Collections.sort(items, new SortByNameUpItem());
+        List<Item> expected = Arrays.asList(second, first, third);
+        assertThat(items, is(expected));
+    }
+
+    @Test
+    public void sortByNameDownItem() {
+        Tracker trackerOne = new Tracker();
+        Item first = trackerOne.add(new Item("orange"));
+        Item second = trackerOne.add(new Item("apple"));
+        Item third = trackerOne.add(new Item("tomato"));
+        List<Item> items = trackerOne.findAll();
+        Collections.sort(items, new SortByNameDownItem());
+        List<Item> expected = Arrays.asList(third, first, second);
+        assertThat(items, is(expected));
     }
 }
