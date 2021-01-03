@@ -80,21 +80,33 @@ public class JobSorterTest {
 
     @Test
     public void whenComparatorByNameAndPriorityDecrease() {
+        List<Job> list = Arrays.asList(
+                new Job("Impl task", 0),
+                new Job("Fix bug", 1),
+                new Job("Impl task", 2),
+                new Job("Fix bug", 3));
         Comparator<Job> cmpNamePriority = new JobDescByName()
                 .thenComparing(new JobDescByPriority());
-        int rsl = cmpNamePriority.compare(
+        List<Job> listExpected = Arrays.asList(
+                new Job("Impl task", 2),
                 new Job("Impl task", 0),
+                new Job("Fix bug", 3),
                 new Job("Fix bug", 1));
-        assertThat(rsl, lessThan(0));
+        Collections.sort(list, cmpNamePriority);
+        assertThat(list, is(listExpected));
     }
 
     @Test
-    public void whenComparatorByNameAndPriorityIncrease() {
-        Comparator<Job> cmpNamePriority = new JobIncreaseByName()
-                .thenComparing(new JobIncreaseByPriority());
-        int rsl = cmpNamePriority.compare(
-                new Job("Impl task", 0),
+    public void whenComparatorByNameAndPriorityDecrease2() {
+        Comparator<Job> cmpNamePriority = new JobDescByName()
+                .thenComparing(new JobDescByPriority());
+        int rsl1 = cmpNamePriority.compare(
+                new Job("Fix bug", 1),
                 new Job("Fix bug", 1));
-        assertThat(rsl, greaterThan(0));
+        int rsl2 = cmpNamePriority.compare(
+                new Job("Impl task", 0),
+                new Job("Fix bug", 3));
+        assertThat(rsl1, is(0));
+        assertThat(rsl2, lessThan(0));
     }
 }
