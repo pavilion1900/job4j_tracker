@@ -5,13 +5,37 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Класс описывает модель банковской системы.
+ * В системе можно производить следующие действия:
+ * 1. Регистрировать пользователя.
+ * 2. Добавлять пользователю банковские счета. У пользователя может быть несколько счетов.
+ * 3. Переводить деньги с одного счета на другой.
+ *
+ * @author Sergey Korolenko
+ */
 public class BankService {
+    /**
+     * Это поле содержит всех пользователей системы с привязанными к ним счетами.
+     */
     private Map<User, List<Account>> users = new HashMap<>();
 
+    /**
+     * Метод добавляет пользователя в систему.
+     * Проверяет, если такого пользователя нет, то добавляет его в систему.
+     *
+     * @param user пользователь, который может быть добавлен в систему.
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
+    /**
+     * Метод добавляет новый счет пользователю.
+     *
+     * @param passport паспортные данные пользователя.
+     * @param account  новый счет пользователя
+     */
     public void addAccount(String passport, Account account) {
         User person = findByPassport(passport);
         if (person != null) {
@@ -22,6 +46,13 @@ public class BankService {
         }
     }
 
+    /**
+     * Метод принимает на вход паспортные данные пользователя и проверяет
+     * есть ли такой пользователь в системе.
+     *
+     * @param passport паспортные данные пользователя.
+     * @return возвращает пользователя или null, если пользователя нет в системе.
+     */
     public User findByPassport(String passport) {
         User person = null;
         for (User user : users.keySet()) {
@@ -33,6 +64,13 @@ public class BankService {
         return person;
     }
 
+    /**
+     * Метод ищет пользователя по реквизитам.
+     *
+     * @param passport  паспортные данные пользователя
+     * @param requisite реквизиты счета
+     * @return возвращает пользователя или null, если пользователя нет в системе.
+     */
     public Account findByRequisite(String passport, String requisite) {
         Account account = null;
         User person = findByPassport(passport);
@@ -48,6 +86,17 @@ public class BankService {
         return account;
     }
 
+    /**
+     * Метод для перечисления денег с одного счета на другой.
+     *
+     * @param srcPassport   паспортные данные пользователя_1, который будет перечислять деньги.
+     * @param srcRequisite  реквизиты счета пользователя_1, с которого будут перечисляться деньги.
+     * @param destPassport  паспортные данные пользователя_2, кому будут перечислены деньги.
+     * @param destRequisite реквизиты счета пользователя_2, на который будут перечислены деньги.
+     * @param amount        сумма для перечисления.
+     * @return возвращает false, если счёт не найден или не хватает денег на счёте srcAccount
+     * (с которого переводят).
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;

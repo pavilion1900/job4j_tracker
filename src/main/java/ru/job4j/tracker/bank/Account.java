@@ -2,7 +2,15 @@ package ru.job4j.tracker.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает модель банковскаого счета
+ *
+ * @author Sergey Korolenko
+ */
 public class Account {
+    /**
+     * Модель содержит два поля: реквизиты и баланс
+     */
     private String requisite;
     private double balance;
 

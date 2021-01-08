@@ -2,7 +2,15 @@ package ru.job4j.tracker.bank;
 
 import java.util.Objects;
 
+/**
+ * Класс описывает модель пользователя банка
+ *
+ * @author Sergey Korolenko
+ */
 public class User {
+    /**
+     * Модель содержит два поля: поспорт и имя пользователя
+     */
     private String passport;
     private String username;
 
