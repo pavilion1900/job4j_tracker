@@ -5,8 +5,9 @@ import java.util.Optional;
 
 public class OptionalIfPresent {
     public static void ifPresent(int[] data) {
-        if (max(data).isPresent()) {
-            Optional.of(max(data).get()).ifPresent(num -> System.out.println("Max: " + num));
+        Optional<Integer> rsl = max(data);
+        if (rsl.isPresent()) {
+            rsl.ifPresent(num -> System.out.println("Max: " + num));
         } else {
             Optional.empty().ifPresent(System.out::println);
         }
