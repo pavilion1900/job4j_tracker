@@ -9,6 +9,8 @@ public class Profiles {
         return profiles
                 .stream()
                 .map(prof -> prof.getAddress())
+                .sorted((first, second) -> first.getCity().compareTo(second.getCity()))
+                .distinct()
                 .collect(Collectors.toList());
     }
 }
