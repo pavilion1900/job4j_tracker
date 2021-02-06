@@ -148,7 +148,7 @@ public class StartUITest {
         Item third = trackerOne.add(new Item("tomato"));
         List<Item> items = trackerOne.findAll();
         Collections.sort(items, new SortByNameUpItem());
-        List<Item> expected = Arrays.asList(second, first, third);
+        List<Item> expected = List.of(second, first, third);
         assertThat(items, is(expected));
     }
 
@@ -160,7 +160,7 @@ public class StartUITest {
         Item third = trackerOne.add(new Item("tomato"));
         List<Item> items = trackerOne.findAll();
         Collections.sort(items, new SortByNameDownItem());
-        List<Item> expected = Arrays.asList(third, first, second);
+        List<Item> expected = List.of(third, first, second);
         assertThat(items, is(expected));
     }
 }

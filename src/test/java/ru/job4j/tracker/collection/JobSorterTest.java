@@ -22,7 +22,7 @@ public class JobSorterTest {
                 new Job("speaking", 2),
                 new Job("understanding", 3));
         Collections.sort(list, new JobIncreaseByName());
-        List<Job> listExpected = Arrays.asList(
+        List<Job> listExpected = List.of(
                 new Job("reading", 4),
                 new Job("speaking", 2),
                 new Job("understanding", 3),
@@ -38,7 +38,7 @@ public class JobSorterTest {
                 new Job("speaking", 2),
                 new Job("understanding", 3));
         Collections.sort(list, new JobDescByName());
-        List<Job> listExpected = Arrays.asList(
+        List<Job> listExpected = List.of(
                 new Job("writing", 1),
                 new Job("understanding", 3),
                 new Job("speaking", 2),
@@ -54,7 +54,7 @@ public class JobSorterTest {
                 new Job("speaking", 2),
                 new Job("understanding", 3));
         Collections.sort(list, new JobIncreaseByPriority());
-        List<Job> listExpected = Arrays.asList(
+        List<Job> listExpected = List.of(
                 new Job("writing", 1),
                 new Job("speaking", 2),
                 new Job("understanding", 3),
@@ -70,7 +70,7 @@ public class JobSorterTest {
                 new Job("speaking", 2),
                 new Job("understanding", 3));
         Collections.sort(list, new JobDescByPriority());
-        List<Job> listExpected = Arrays.asList(
+        List<Job> listExpected = List.of(
                 new Job("reading", 4),
                 new Job("understanding", 3),
                 new Job("speaking", 2),
@@ -87,7 +87,7 @@ public class JobSorterTest {
                 new Job("Fix bug", 3));
         Comparator<Job> cmpNamePriority = new JobDescByName()
                 .thenComparing(new JobDescByPriority());
-        List<Job> listExpected = Arrays.asList(
+        List<Job> listExpected = List.of(
                 new Job("Impl task", 2),
                 new Job("Impl task", 0),
                 new Job("Fix bug", 3),
