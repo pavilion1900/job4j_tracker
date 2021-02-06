@@ -28,10 +28,29 @@ public class StudentMapTest {
         students.add(new Student(70, "Surname7"));
         students.add(new Student(80, "Surname8"));
         students.add(new Student(90, "Surname9"));
+        students.add(new Student(90, "Surname9"));
+        students.add(new Student(90, "Surname9"));
+        students.add(new Student(90, "Surname9"));
     }
 
     @Test
     public void checkMap() {
+        Map<String, Student> exp = new HashMap<>();
+        exp.put("Surname1", new Student(10, "Surname1"));
+        exp.put("Surname2", new Student(20, "Surname2"));
+        exp.put("Surname3", new Student(30, "Surname3"));
+        exp.put("Surname4", new Student(40, "Surname4"));
+        exp.put("Surname5", new Student(50, "Surname5"));
+        exp.put("Surname6", new Student(60, "Surname6"));
+        exp.put("Surname7", new Student(70, "Surname7"));
+        exp.put("Surname8", new Student(80, "Surname8"));
+        exp.put("Surname9", new Student(90, "Surname9"));
+        Map<String, Student> rsl = listToMap(students);
+        assertThat(rsl, is(exp));
+    }
+
+    @Test
+    public void checkMapWithDuplicateValue() {
         Map<String, Student> exp = new HashMap<>();
         exp.put("Surname1", new Student(10, "Surname1"));
         exp.put("Surname2", new Student(20, "Surname2"));
