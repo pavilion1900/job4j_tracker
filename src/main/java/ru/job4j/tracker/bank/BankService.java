@@ -52,15 +52,10 @@ public class BankService {
      * возвращает пустой Optional.
      */
     public Optional<User> findByPassport(String passport) {
-        Optional<User> rsl = Optional.empty();
-        Optional<User> temp = users.keySet()
+        return users.keySet()
                 .stream()
                 .filter(user -> user.getPassport().equals(passport))
                 .findFirst();
-        if (temp.isPresent()) {
-            rsl = temp;
-        }
-        return rsl;
     }
 
     /**
