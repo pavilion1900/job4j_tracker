@@ -36,6 +36,13 @@ public class User {
     }
 
     @Override
+    public String toString() {
+        return "User{"
+                + "passport='" + passport + '\''
+                + ", username='" + username + '\'' + '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
