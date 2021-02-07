@@ -68,7 +68,7 @@ public class BankService {
      *
      * @param passport  паспортные данные пользователя
      * @param requisite реквизиты счета
-     * @return возвращает Optional пользователя, если пользователя нет в системе,
+     * @return возвращает Optional счета, если пользователя нет в системе,
      * возвращает пустой Optional.
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
