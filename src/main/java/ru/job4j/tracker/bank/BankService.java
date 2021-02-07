@@ -48,7 +48,8 @@ public class BankService {
      * есть ли такой пользователь в системе.
      *
      * @param passport паспортные данные пользователя.
-     * @return возвращает пользователя или null, если пользователя нет в системе.
+     * @return возвращает Optional пользователя, если пользователя нет в системе,
+     * возвращает пустой Optional.
      */
     public Optional<User> findByPassport(String passport) {
         Optional<User> rsl = Optional.empty();
@@ -67,7 +68,8 @@ public class BankService {
      *
      * @param passport  паспортные данные пользователя
      * @param requisite реквизиты счета
-     * @return возвращает пользователя или null, если пользователя нет в системе.
+     * @return возвращает Optional пользователя, если пользователя нет в системе,
+     * возвращает пустой Optional.
      */
     public Optional<Account> findByRequisite(String passport, String requisite) {
         Optional<User> person = findByPassport(passport);
