@@ -7,6 +7,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class MinMethodTest {
+
     @Test
     public void test() {
         assertEquals(
@@ -14,4 +15,5 @@ public class MinMethodTest {
                 MinMethod.min(List.of("ccc", "bb", "a"))
         );
     }
+
 }
