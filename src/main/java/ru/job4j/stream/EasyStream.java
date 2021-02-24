@@ -8,7 +8,10 @@ import java.util.function.Predicate;
 public class EasyStream {
     private List<Integer> integerList;
 
-    public EasyStream(List<Integer> list) {
+    private EasyStream() {
+    }
+
+    private EasyStream(List<Integer> list) {
         this.integerList = list;
     }
 
