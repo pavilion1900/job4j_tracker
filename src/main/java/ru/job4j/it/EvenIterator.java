@@ -13,12 +13,15 @@ public class EvenIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        for (int i = point; i < data.length; i++) {
-            if (data[i] % 2 == 0) {
-                return true;
+        boolean rsl = false;
+        while (point < data.length) {
+            if (data[point] % 2 == 0) {
+                rsl = true;
+                break;
             }
+            point++;
         }
-        return false;
+        return rsl;
     }
 
     @Override
