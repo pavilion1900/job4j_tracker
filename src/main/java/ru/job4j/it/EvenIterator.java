@@ -29,11 +29,6 @@ public class EvenIterator implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        int num = data[point];
-        if (hasNext()) {
-            point++;
-            return num % 2 == 0 ? num : next();
-        }
-        return num;
+        return data[point++];
     }
 }
